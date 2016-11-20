@@ -14,14 +14,15 @@ createPlot1 <- function() {
     hpc <- filter(hpc, Date >= ymd(" 2007-02-01") & Date <= ymd("2007-02-02"))
     
     ## Start the plot
-    ## Create the png in current directory as per the requirement
-    png("plot1.png", width = 480, height = 480, units = "px")
     ## Draw the histogram
     hist(hpc$Global_active_power, col = "red", main = "Global Active Power", 
          xlab = "Global Active Power (kilowatts)", ylab = "Frequency")
+    
+    ## Copy the histogram to png
+    ## Create the png in current directory as per the requirement
+    dev.copy(png, file = "plot1.png", width = 480, height = 480, units = "px")
     ## This outputs the date to the png file
     dev.off()
 }
 
-getTheData()
 createPlot1()
