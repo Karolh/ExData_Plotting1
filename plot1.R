@@ -5,7 +5,7 @@ library(lubridate)
 
 source("get_the_data.R")
 
-createPlot1 <- function() {
+generatePlot1 <- function() {
     hpc <- getTheData()
     ## Convert the first column to dates
     hpc[,1] <- dmy(hpc$Date)
@@ -24,5 +24,3 @@ createPlot1 <- function() {
     ## This outputs the date to the png file
     dev.off()
 }
-
-createPlot1()
