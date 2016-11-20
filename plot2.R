@@ -5,7 +5,8 @@ library(lubridate)
 
 source("get_the_data.R")
 
-createPlot2 <- function() {
+## Create Plot 2 - defaults to creating a png called plot2.png
+generatePlot2 <- function(toPng = TRUE) {
     hpc <- getTheData()
     
     ## Merging Date and Time columns together 
@@ -21,10 +22,10 @@ createPlot2 <- function() {
          xlab = "", 
          ylab = "Global Active Power (kilowatts)")
     
-    dev.copy(png, file = "plot2.png", width = 480, height = 480, units = "px")
-    dev.off()
+    if (toPng){
+        dev.copy(png, file = "plot2.png", width = 480, height = 480, units = "px")
+        dev.off()
+    }
 }
-
-createPlot2()
 
 
