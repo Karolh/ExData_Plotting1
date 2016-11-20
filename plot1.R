@@ -6,8 +6,7 @@ library(lubridate)
 source("get_the_data.R")
 
 createPlot1 <- function() {
-    hpc <- read.csv("data/hpc/household_power_consumption.txt", sep = ";", 
-                    stringsAsFactors = FALSE, as.is = TRUE, na.strings = c('?', 'NA', ""))
+    hpc <- getTheData()
     ## Convert the first column to dates
     hpc[,1] <- dmy(hpc$Date)
     
