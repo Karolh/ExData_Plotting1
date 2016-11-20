@@ -6,7 +6,8 @@ library(lubridate)
 
 source("get_the_data.R")
 
-createPlot3 <- function() {
+## Create Plot 3 - defaults to creating a png file called plot3.png
+generatePlot3 <- function(toPng = TRUE, legendBorder = "o") {
     hpc <- getTheData()
     
     ## Merging Date and Time columns together 
@@ -35,11 +36,13 @@ createPlot3 <- function() {
     
     ## Apply the legend
     legend("topright", col = c("black", "red", "blue"), 
-           legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty = 1)
+           legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
+           lty = 1,
+           bty = legendBorder)
     
-    ## Finally create the png file
-    dev.copy(png, file = "plot3.png")
-    dev.off()
+    if (toPng){
+        ## Finally create the png file
+        dev.copy(png, file = "plot3.png")
+        dev.off()
+    }
 }
-
-createPlot3()
